@@ -6,11 +6,7 @@ import java.lang.*;
 public class majorityElement {
     //Initial Template for Java
 
-import java.util.*;
-import java.io.*;
-import java.lang.*;
-
-    class Geeks
+    static class Geeks
     {
         public static void main(String args[])
         {
@@ -32,7 +28,7 @@ import java.lang.*;
 
 
     //User function Template for Java
-    class Majority
+    static class Majority
     {
         static int majorityElement(int arr[], int size)
         {
