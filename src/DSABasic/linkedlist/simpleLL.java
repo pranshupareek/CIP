@@ -23,6 +23,22 @@ public class simpleLL {
             printLLRec(head.next);
         }
     }
+    static int searchLL(Node head,int ele){
+        int ans = -1;
+        Node temp = head;
+        int count = 0;
+        while (temp!=null){
+            if (temp.data == ele){
+                ans=++count;
+                break;
+            }
+            else {
+                temp = temp.next;
+                count++;
+            }
+        }
+        return ans;
+    }
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -32,5 +48,6 @@ public class simpleLL {
         t1.next = t2;
         printLL(head);
         printLLRec(head);
+        System.out.println(searchLL(head, 21));
     }
 }
