@@ -39,15 +39,21 @@ public class simpleLL {
         }
         return ans;
     }
+    static Node insertAtBeg(Node head, int ele){
+        Node temp = new Node(ele);
+        temp.next = head;
+        return temp;
+    }
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
         Node t2 = new Node(30);
         head.next = t1;
-//        operation
         t1.next = t2;
         printLL(head);
         printLLRec(head);
         System.out.println(searchLL(head, 21));
+        head = insertAtBeg(head, 5);
+        printLL(head);
     }
 }
