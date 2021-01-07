@@ -80,6 +80,24 @@ public class simpleLL {
         }
         return head;
     }
+    static Node insertPos(Node head, int pos, int ele){
+        Node curr = head;
+        while (curr.next!=null&&pos>2){
+            curr = curr.next;
+            pos--;
+        }
+        if (pos==2){
+            Node temp = new Node(ele);
+            temp.next = curr.next;
+            curr.next = temp;
+        }
+        else if (pos==1){
+            Node temp = new Node(ele);
+            temp.next = head;
+            head = temp;
+        }
+        return head;
+    }
 
     public static void main(String args[]){
         Node head = new Node(10);
@@ -100,6 +118,9 @@ public class simpleLL {
         printLL(head);
         System.out.println();
         head = delTail(head);
+        printLL(head);
+        System.out.println();
+        head = insertPos(head, 5,69);
         printLL(head);
     }
 }
