@@ -44,6 +44,19 @@ public class simpleLL {
         temp.next = head;
         return temp;
     }
+    static Node insertAtEnd(Node head, int ele){
+        Node temp = head;
+        Node n = new Node(ele);
+        if (head==null){
+            return n;
+        }
+
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next = n;
+        return head;
+    }
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -54,6 +67,9 @@ public class simpleLL {
         printLLRec(head);
         System.out.println(searchLL(head, 21));
         head = insertAtBeg(head, 5);
+        printLL(head);
+        System.out.println();
+        head = insertAtEnd(head, 7);
         printLL(head);
     }
 }
