@@ -63,6 +63,23 @@ public class simpleLL {
         }
         return head.next;
     }
+    static Node delTail(Node head){
+        if (head==null){
+            return null;
+        }
+
+        Node curr = head;
+        if (curr.next==null){
+            return null;
+        }
+        else {
+            while (curr.next.next!=null){
+                curr=curr.next;
+            }
+            curr.next=null;
+        }
+        return head;
+    }
 
     public static void main(String args[]){
         Node head = new Node(10);
@@ -80,6 +97,9 @@ public class simpleLL {
         printLL(head);
         System.out.println();
         head = delHead(head);
+        printLL(head);
+        System.out.println();
+        head = delTail(head);
         printLL(head);
     }
 }
