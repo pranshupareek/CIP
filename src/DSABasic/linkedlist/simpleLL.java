@@ -57,6 +57,13 @@ public class simpleLL {
         temp.next = n;
         return head;
     }
+    static Node delHead(Node head){
+        if (head==null){
+            return null;
+        }
+        return head.next;
+    }
+
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -70,6 +77,9 @@ public class simpleLL {
         printLL(head);
         System.out.println();
         head = insertAtEnd(head, 7);
+        printLL(head);
+        System.out.println();
+        head = delHead(head);
         printLL(head);
     }
 }
