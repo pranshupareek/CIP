@@ -148,6 +148,23 @@ public class simpleLL {
 
     }
 
+    static void printFromEndFast(Node head, int pos){
+        Node slow = head;
+        Node fast = head;
+        while (pos>1){
+            if (fast.next==null){
+                return;
+            }
+            fast=fast.next;
+            pos--;
+        }
+        while (fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        System.out.println(slow.data);
+    }
+
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -177,6 +194,7 @@ public class simpleLL {
         System.out.println();
         printMiddle(head);
         System.out.println();
-        printFromEnd(head, 2);
+        printFromEnd(head, 5);
+        printFromEndFast(head,5);
     }
 }
