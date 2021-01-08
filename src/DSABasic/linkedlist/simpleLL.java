@@ -129,6 +129,24 @@ public class simpleLL {
         }
         System.out.println(curr.data);
     }
+    public static void printFromEnd(Node head, int pos){
+        Node temp = head;
+        int len = 0;
+        while (temp!=null){
+            temp = temp.next;
+            len++;
+        }
+        temp = head;
+        int toPrint = len-pos+1;
+        if (toPrint>0){
+            while (toPrint>1){
+                temp = temp.next;
+                toPrint--;
+            }
+            System.out.println(temp.data);
+        }
+
+    }
 
     public static void main(String args[]){
         Node head = new Node(10);
@@ -158,5 +176,7 @@ public class simpleLL {
         printLL(head);
         System.out.println();
         printMiddle(head);
+        System.out.println();
+        printFromEnd(head, 2);
     }
 }
