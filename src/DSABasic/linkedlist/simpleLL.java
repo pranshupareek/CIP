@@ -117,6 +117,19 @@ public class simpleLL {
         return head;
     }
 
+    public static void printMiddle(Node head){
+        if (head==null){
+            return;
+        }
+        Node curr = head;
+        Node ep = head;
+        while (ep!=null && ep.next!=null){
+            curr = curr.next;
+            ep = ep.next.next;
+        }
+        System.out.println(curr.data);
+    }
+
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -143,5 +156,7 @@ public class simpleLL {
         System.out.println();
         head = insertSorted(head, 25);
         printLL(head);
+        System.out.println();
+        printMiddle(head);
     }
 }
