@@ -165,6 +165,23 @@ public class simpleLL {
         System.out.println(slow.data);
     }
 
+    static Node reverse(Node head){
+        if (head==null){
+            return null;
+        }
+        Node curr = head.next;
+        Node temp;
+        Node prePointer = head;
+        prePointer.next = null;
+        while (curr!=null){
+            temp = curr.next;
+            curr.next = prePointer;
+            prePointer = curr;
+            curr = temp;
+        }
+        return prePointer;
+    }
+
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -196,5 +213,8 @@ public class simpleLL {
         System.out.println();
         printFromEnd(head, 5);
         printFromEndFast(head,5);
+        System.out.println();
+        head = reverse(head);
+        printLL(head);
     }
 }
