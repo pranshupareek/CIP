@@ -203,6 +203,18 @@ public class simpleLL {
         return recurReverse(temp, previous);
     }
 
+    static void removeDuplicates(Node head){
+        Node curr = head.next;
+        while (curr != null && curr.next != null){
+            if (curr.data == curr.next.data){
+                curr.next = curr.next.next;
+            }
+            else {
+                curr = curr.next;
+            }
+        }
+    }
+
     public static void main(String args[]){
         Node head = new Node(10);
         Node t1 = new Node(20);
@@ -239,6 +251,12 @@ public class simpleLL {
         printLL(head);
         System.out.println();
         head = recurReverse(head);
+        printLL(head);
+        System.out.println();
+        head = insertSorted(head, 20);
+        printLL(head);
+        System.out.println();
+        removeDuplicates(head);
         printLL(head);
     }
 }
