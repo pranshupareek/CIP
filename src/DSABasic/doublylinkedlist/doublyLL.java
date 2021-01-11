@@ -42,6 +42,20 @@ public class doublyLL {
         temp.prev = curr;
         return head;
     }
+    static Node reverse(Node head){
+        if (head==null || head.next == null){
+            return null;
+        }
+        Node temp = head;
+        Node prev = null;
+        while (temp != null){
+                prev = temp.prev;
+                temp.prev = temp.next;
+                temp.next = prev;
+                temp = temp.prev;
+        }
+        return prev.prev;
+    }
 
     public static void main(String arg[]){
         Node head = new Node(10);
@@ -55,6 +69,9 @@ public class doublyLL {
         printLL(head);
         System.out.println();
         head = insertAtEnd(head, 50);
+        printLL(head);
+        System.out.println();
+        head = reverse(head);
         printLL(head);
     }
 }
