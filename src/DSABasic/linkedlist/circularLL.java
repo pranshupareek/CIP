@@ -41,6 +41,15 @@ public class circularLL {
         head.next = temp;
         return temp;
     }
+    static Node deleteHead(Node head){
+        if (head==null || head.next == head){
+            return null;
+        }
+        head.data = head.next.data;
+        head.next = head.next.next;
+        return head;
+    }
+
 
     public static void main(String args[]){
         Node head = new Node(10);
@@ -54,6 +63,9 @@ public class circularLL {
         printLL(head);
         System.out.println();
         head = insertAtEnd(head,40);
+        printLL(head);
+        System.out.println();
+        head = deleteHead(head);
         printLL(head);
     }
 }
