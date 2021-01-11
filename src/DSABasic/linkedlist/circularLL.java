@@ -1,5 +1,7 @@
 package DSABasic.linkedlist;
 
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
 public class circularLL {
 
     static void printLL(Node head){
@@ -26,6 +28,19 @@ public class circularLL {
         head.next = temp;
         return head;
     }
+    static Node insertAtEnd(Node head, int ele){
+        Node temp = new Node(ele);
+        if (head == null){
+            temp.next = temp;
+            return temp;
+        }
+        int tempData = head.data;
+        head.data = temp.data;
+        temp.data = tempData;
+        temp.next = head.next;
+        head.next = temp;
+        return temp;
+    }
 
     public static void main(String args[]){
         Node head = new Node(10);
@@ -36,6 +51,9 @@ public class circularLL {
 
         head = insertAtBeg(head, 5);
         System.out.println();
+        printLL(head);
+        System.out.println();
+        head = insertAtEnd(head,40);
         printLL(head);
     }
 }
