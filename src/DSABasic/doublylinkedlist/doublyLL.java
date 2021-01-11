@@ -29,6 +29,19 @@ public class doublyLL {
             temp = temp.next;
         }
     }
+    static Node insertAtEnd(Node head, int data){
+        Node temp = new Node(data);
+        if (head==null){
+            return temp;
+        }
+        Node curr = head;
+        while (curr.next!=null){
+            curr = curr.next;
+        }
+        curr.next = temp;
+        temp.prev = curr;
+        return head;
+    }
 
     public static void main(String arg[]){
         Node head = new Node(10);
@@ -39,6 +52,9 @@ public class doublyLL {
         printLL(head);
         System.out.println();
         head = insertBegin(head,5);
+        printLL(head);
+        System.out.println();
+        head = insertAtEnd(head, 50);
         printLL(head);
     }
 }
