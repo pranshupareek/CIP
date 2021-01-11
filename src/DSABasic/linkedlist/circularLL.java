@@ -49,6 +49,18 @@ public class circularLL {
         head.next = head.next.next;
         return head;
     }
+    static Node deleteKthNode(Node head, int k){
+        if (k==1){
+            return deleteHead(head);
+        }
+        Node temp = head;
+        while (k>2){
+            temp=temp.next;
+            k--;
+        }
+        temp.next = temp.next.next;
+        return head;
+    }
 
 
     public static void main(String args[]){
@@ -66,6 +78,9 @@ public class circularLL {
         printLL(head);
         System.out.println();
         head = deleteHead(head);
+        printLL(head);
+        System.out.println();
+        head = deleteKthNode(head, 2);
         printLL(head);
     }
 }
