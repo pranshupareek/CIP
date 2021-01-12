@@ -56,6 +56,13 @@ public class doublyLL {
         }
         return prev.prev;
     }
+    static Node delHead(Node head){
+        if (head == null || head.next == null){
+            return null;
+        }
+        head.next.prev = null;
+        return head.next;
+    }
 
     public static void main(String arg[]){
         Node head = new Node(10);
@@ -72,6 +79,9 @@ public class doublyLL {
         printLL(head);
         System.out.println();
         head = reverse(head);
+        printLL(head);
+        System.out.println();
+        head = delHead(head);
         printLL(head);
     }
 }
