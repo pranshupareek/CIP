@@ -63,6 +63,17 @@ public class doublyLL {
         head.next.prev = null;
         return head.next;
     }
+    static Node delTail(Node head){
+        if (head == null || head.next == null){
+            return null;
+        }
+        Node curr = head.next;
+        while (curr.next!=null){
+            curr = curr.next;
+        }
+        curr.prev.next = null;
+        return head;
+    }
 
     public static void main(String arg[]){
         Node head = new Node(10);
@@ -82,6 +93,9 @@ public class doublyLL {
         printLL(head);
         System.out.println();
         head = delHead(head);
+        printLL(head);
+        System.out.println();
+        head = delTail(head);
         printLL(head);
     }
 }
