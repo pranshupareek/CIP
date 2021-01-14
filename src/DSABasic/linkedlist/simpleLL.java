@@ -1,14 +1,5 @@
 package DSABasic.linkedlist;
 
-class Node{
-    int data;
-    Node next;
-    Node(int x){
-        data = x;
-        next = null;
-    }
-}
-
 public class simpleLL {
     static void printLL(Node head){
         Node temp = head;
@@ -39,7 +30,7 @@ public class simpleLL {
         }
         return ans;
     }
-    static Node insertAtBeg(Node head, int ele){
+    public static Node insertAtBeg(Node head, int ele){
         Node temp = new Node(ele);
         temp.next = head;
         return temp;
@@ -57,7 +48,7 @@ public class simpleLL {
         temp.next = n;
         return head;
     }
-    static Node delHead(Node head){
+    public static Node delHead(Node head){
         if (head==null){
             return null;
         }
