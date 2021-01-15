@@ -36,6 +36,9 @@ class queueLL{
         size--;
         int res = front.data;
         front = front.next;
+        if (front == null){
+            rear = null;
+        }
         return res;
     }
     int size(){
