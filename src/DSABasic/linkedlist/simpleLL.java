@@ -1,7 +1,7 @@
 package DSABasic.linkedlist;
 
 public class simpleLL {
-    static void printLL(Node head){
+    public static void printLL(Node head){
         Node temp = head;
         while (temp != null){
             System.out.print(temp.data + " ");

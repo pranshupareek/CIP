@@ -2,8 +2,8 @@ package DSABasic.linkedlist;
 
 public class Node{
     public int data;
-    Node next;
-    Node(int x){
+    public Node next;
+    public Node(int x){
         data = x;
         next = null;
     }
