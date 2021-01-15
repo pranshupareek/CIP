@@ -50,9 +50,59 @@ class Queue{
     }
 }
 
+class circularQueue{
+    int arr[];
+    int front,cap,size;
+    circularQueue(int c){
+        arr = new int[c];
+        cap = c;
+        front = 0;
+        size = 0;
+    }
+    boolean isFull(){
+        return cap==size;
+    }
+    boolean isEmpty(){
+        return size==0;
+    }
+    int getFront(){
+        if (isEmpty()){
+            return -1;
+        }
+        return arr[front];
+    }
+    int getRear(){
+        if (isEmpty()){
+            return -1;
+        }
+        return arr[(front+size-1)%cap];
+    }
+    void enqueue(int x){
+        if (isFull()){
+            return;
+        }
+        int rear = (front+size-1)%cap;
+        rear = (rear+1)%cap;
+        arr[rear] = x;
+        size++;
+    }
+    int dequeue(){
+        if (isEmpty()){
+            return -1;
+        }
+        int res = getFront();
+        front = (front+1)%cap;
+        size--;
+        return res;
+    }
+    int size(){
+        return size;
+    }
+}
+
 public class implementation {
     public static void main(String arg[]){
-        Queue q = new Queue(3);
+        circularQueue q = new circularQueue(3);
         q.enqueue(10);
         q.enqueue(20);
         q.enqueue(30);
