@@ -77,6 +77,12 @@ class main{
         }
         return size(bt.left)+size(bt.right)+1;
     }
+    static int maxVal(binaryTree bt){
+        if (bt == null){
+            return Integer.MIN_VALUE;
+        }
+        return Math.max(bt.key, Math.max(maxVal(bt.left), maxVal(bt.right)));
+    }
 
 
     public static void main(String arg[]){
@@ -95,5 +101,6 @@ class main{
         System.out.println();
         printLevel(b);
         System.out.println("\n"+size(b));
+        System.out.println(maxVal(b));
     }
 }
