@@ -71,6 +71,12 @@ class main{
             }
         }
     }
+    static int size(binaryTree bt){
+        if (bt==null){
+            return 0;
+        }
+        return size(bt.left)+size(bt.right)+1;
+    }
 
 
     public static void main(String arg[]){
@@ -88,5 +94,6 @@ class main{
         printNodeAtK(b,2);
         System.out.println();
         printLevel(b);
+        System.out.println("\n"+size(b));
     }
 }
