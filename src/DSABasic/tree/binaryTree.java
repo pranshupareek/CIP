@@ -1,5 +1,8 @@
 package DSABasic.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class binaryTree {
     int key;
     binaryTree left;
@@ -51,6 +54,23 @@ class main{
         printNodeAtK(bt.left, k-1);
         printNodeAtK(bt.right, k-1);
     }
+    static void printLevel(binaryTree bt){
+        if (bt == null){
+            return;
+        }
+        Queue<binaryTree> q = new LinkedList<binaryTree>();
+        q.add(bt);
+        while (q.isEmpty() == false){
+            binaryTree curr = q.poll();
+            System.out.print(curr.key+ " ");
+            if (curr.left!=null){
+                q.add(curr.left);
+            }
+            if (curr.right!=null){
+                q.add(curr.right);
+            }
+        }
+    }
 
 
     public static void main(String arg[]){
@@ -66,5 +86,7 @@ class main{
         postorder(b);
         System.out.println("\n"+height(b));
         printNodeAtK(b,2);
+        System.out.println();
+        printLevel(b);
     }
 }
