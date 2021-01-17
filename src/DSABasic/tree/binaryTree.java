@@ -34,6 +34,25 @@ class main{
         postorder(bt.right);
         System.out.print(bt.key+" ");
     }
+    static int height(binaryTree bt){
+        if (bt == null){
+            return 0;
+        }
+        return Math.max(height(bt.left), height(bt.right))+1;
+    }
+    static void printNodeAtK(binaryTree bt, int k){
+        if (bt==null){
+            return;
+        }
+        if (k==0){
+            System.out.print(bt.key+" ");
+            return;
+        }
+        printNodeAtK(bt.left, k-1);
+        printNodeAtK(bt.right, k-1);
+    }
+
+
     public static void main(String arg[]){
         binaryTree b = new binaryTree(10);
         b.left = new binaryTree(20);
@@ -45,5 +64,7 @@ class main{
         preorder(b);
         System.out.println();
         postorder(b);
+        System.out.println("\n"+height(b));
+        printNodeAtK(b,2);
     }
 }
