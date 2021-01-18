@@ -1,7 +1,7 @@
 package DSABasic.tree;
-
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class binaryTree {
     int key;
@@ -83,6 +83,19 @@ class main{
         }
         return Math.max(bt.key, Math.max(maxVal(bt.left), maxVal(bt.right)));
     }
+    static void inorderIterative(binaryTree bt){
+        Stack<binaryTree> st = new Stack<binaryTree>();
+        binaryTree curr = bt;
+        while (curr!=null || st.isEmpty()==false){
+            while (curr!=null){
+                st.push(curr);
+                curr=curr.left;
+            }
+            curr = st.pop();
+            System.out.print(curr.key+" ");
+            curr = curr.right;
+        }
+    }
 
 
     public static void main(String arg[]){
@@ -102,5 +115,6 @@ class main{
         printLevel(b);
         System.out.println("\n"+size(b));
         System.out.println(maxVal(b));
+        inorderIterative(b);
     }
 }
