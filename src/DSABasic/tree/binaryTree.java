@@ -96,6 +96,23 @@ class main{
             curr = curr.right;
         }
     }
+    static void preorderIterative(binaryTree bt){
+        Stack<binaryTree> s = new Stack<binaryTree>();
+        binaryTree curr = bt;
+        while (curr!=null || s.isEmpty()==false){
+            while (curr!=null){
+                if (curr.right!=null){
+                    s.push(curr.right);
+                }
+                System.out.print(curr.key+" ");
+                curr=curr.left;
+            }
+
+            if (s.isEmpty()==false){
+                curr = s.pop();
+            }
+        }
+    }
 
 
     public static void main(String arg[]){
@@ -116,5 +133,7 @@ class main{
         System.out.println("\n"+size(b));
         System.out.println(maxVal(b));
         inorderIterative(b);
+        System.out.println();
+        preorderIterative(b);
     }
 }
