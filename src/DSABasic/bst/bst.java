@@ -108,6 +108,25 @@ public class bst {
         else return -1;
     }
 
+    static int ceil(binaryTree bt, int ele){
+        binaryTree prev = null;
+        while (bt!=null){
+            if (bt.key==ele){
+                return ele;
+            }
+            else if (bt.key>ele){
+                prev = bt;
+                bt = bt.left;
+            }
+            else {
+                bt = bt.right;
+            }
+        }
+        if (prev!=null)
+            return prev.key;
+        else return -1;
+    }
+
     public static void main(String arg[]){
         binaryTree bt = new binaryTree(15);
         bt.left = new binaryTree(5);
@@ -125,5 +144,6 @@ public class bst {
         inorder(bt);
         System.out.println();
         System.out.println(floor(bt, 1));
+        System.out.println(ceil(bt, 590));
     }
 }
