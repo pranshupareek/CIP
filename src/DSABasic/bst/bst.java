@@ -1,5 +1,6 @@
 package DSABasic.bst;
 
+
 class binaryTree {
     int key;
     binaryTree left;
@@ -58,6 +59,35 @@ public class bst {
         }
         return bt;
     }
+    static binaryTree delNode(binaryTree bt, int ele){
+        if (bt==null){
+            return null;
+        }
+        if (bt.key>ele){
+            bt.left = delNode(bt.left, ele);
+        }
+        else if (bt.key<ele){
+            bt.right = delNode(bt.right, ele);
+        }
+        else {
+            if (bt.left==null) return bt.right;
+            else if (bt.right==null) return bt.left;
+            else {
+                binaryTree succ = getSucc(bt);
+                bt.key = succ.key;
+                bt.right = delNode(bt.right, succ.key);
+            }
+        }
+        return bt;
+    }
+
+    static binaryTree getSucc(binaryTree bt){
+        binaryTree curr = bt.right;
+        while (curr!=null&&curr.left!=null){
+            curr = curr.left;
+        }
+        return curr;
+    }
 
     public static void main(String arg[]){
         binaryTree bt = new binaryTree(15);
@@ -72,5 +102,7 @@ public class bst {
         bt = insert(bt, 21);
         inorder(bt);
         System.out.println();
+        bt = delNode(bt, 15);
+        inorder(bt);
     }
 }
