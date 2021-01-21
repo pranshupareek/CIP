@@ -53,13 +53,20 @@ public class minheap {
         if (lt<size && arr[lt] < arr[index]){
             smallest = lt;
         }
-        if (rt<size && arr[rt] < arr[index]){
+        if (rt<size && arr[rt] < arr[smallest]){
             smallest = rt;
         }
         if (smallest!=index){
             swap(index, smallest);
             heapify(smallest);
         }
+    }
+
+    public int extractMin(){
+        int res = arr[0];
+        arr[0] = arr[--size];
+        heapify(0);
+        return res;
     }
 
     public void printHeap(){
@@ -79,6 +86,8 @@ class main{
         h.insert(20);
         h.printHeap();
         h.heapify(2);
+        h.printHeap();
+        System.out.println(h.extractMin());
         h.printHeap();
     }
 }
