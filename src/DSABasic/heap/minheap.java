@@ -76,6 +76,14 @@ public class minheap {
         return res;
     }
 
+    public void decreaseKey(int index, int val){
+        arr[index] = val;
+        while (index != 0 && arr[parent(index)] > arr[index]){
+            swap(index,parent(index));
+            index = parent(index);
+        }
+    }
+
     public void printHeap(){
         for (int i = 0; i<size; i++){
             System.out.print(arr[i]+" ");
@@ -95,6 +103,8 @@ class main{
         h.heapify(2);
         h.printHeap();
         System.out.println(h.extractMin());
+        h.printHeap();
+        h.decreaseKey(3,2);
         h.printHeap();
     }
 }
