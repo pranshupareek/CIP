@@ -63,6 +63,13 @@ public class minheap {
     }
 
     public int extractMin(){
+        if (size==0){
+            return -1;
+        }
+        if (size==1){
+            size--;
+            return arr[0];
+        }
         int res = arr[0];
         arr[0] = arr[--size];
         heapify(0);
