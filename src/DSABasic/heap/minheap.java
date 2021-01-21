@@ -41,6 +41,27 @@ public class minheap {
         }
     }
 
+    void swap(int i1, int i2){
+        int temp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = temp;
+    }
+
+    public void heapify(int index){
+        int lt = left(index), rt = right(index);
+        int smallest = index;
+        if (lt<size && arr[lt] < arr[index]){
+            smallest = lt;
+        }
+        if (rt<size && arr[rt] < arr[index]){
+            smallest = rt;
+        }
+        if (smallest!=index){
+            swap(index, smallest);
+            heapify(smallest);
+        }
+    }
+
     public void printHeap(){
         for (int i = 0; i<size; i++){
             System.out.print(arr[i]+" ");
@@ -56,6 +77,8 @@ class main{
         h.insert(2);
         h.insert(15);
         h.insert(20);
+        h.printHeap();
+        h.heapify(2);
         h.printHeap();
     }
 }
