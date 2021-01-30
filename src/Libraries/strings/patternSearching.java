@@ -7,9 +7,16 @@ public class patternSearching {
             System.out.print(index+" ");
             index = txt.indexOf(pat, index+1);
         }
+        System.out.println();
     }
 
     public static void main (String arg[]){
         printIndex("abcd abcd","ab");
+
+        // for digits after decimal
+
+        String str = "15.2551";
+        int index = str.indexOf(".");
+        System.out.println(str.substring(index+1));
     }
 }
