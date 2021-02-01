@@ -2,11 +2,11 @@ package DSAAdvance.mathematics;
 
 public class countTrailingZeroInFactorial {
     static int countZeros(int x){
-        if (x % 5 != 0 || x == 0){
-            return 0;
+        int res = 0;
+        for (int i = 5; i<=x; i*=5){
+            res+=x/i;
         }
-
-        return x/5 + countZeros(x/5);
+        return res;
     }
 
     public static void main(String arg[]){
