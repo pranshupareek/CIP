@@ -7,7 +7,7 @@ public class stockBuySell {
         for (int i = 1; i<n; i++){
             if (arr[i]>arr[i-1]){
                 profit+=(arr[i]-arr[i-1]);
-            }git
+            }
         }
         System.out.println(profit);
     }
