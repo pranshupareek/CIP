@@ -2,6 +2,8 @@ package DSAAdvance.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static DSAAdvance.arrays.prefixSumTechnique.maxOccurrence;
 
@@ -51,6 +53,18 @@ public class prefixSumTechnique {
         }
     }
 
+    boolean checkSubarrayWith0Sum(){
+        Set<Integer> hs = new HashSet<>();
+        hs.add(0);
+        for (int i = 0; i<n; i++){
+            if (hs.contains(a[i])){
+                return true;
+            }
+            hs.add(a[i]);
+        }
+        return false;
+    }
+
     public static int maxOccurrence(int L[], int R[]){
         int n = L.length;
         int arr[] = new int[1000];
@@ -85,7 +99,7 @@ class main{
 
     public static void main(String arg[]){
 //        int arr[] = {3,4,8,-9,8,6};
-        int arr[] = {5,2,6,1,1,1,5};
+        int arr[] = {5,2,6,1,0,1,1,5};
         prefixSumTechnique ps = new prefixSumTechnique(arr);
         System.out.println(ps.sumOfRange(2,5));
         System.out.println(ps.sumOfRange(3,2));
@@ -99,5 +113,7 @@ class main{
         System.out.println(maxOccurrence(l,r));
 
         System.out.println(ps.check3EqualParts());
+
+        System.out.println(ps.checkSubarrayWith0Sum());
     }
 }
