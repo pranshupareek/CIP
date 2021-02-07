@@ -1,6 +1,7 @@
 package DSAAdvance.arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static DSAAdvance.arrays.prefixSumTechnique.maxOccurrence;
 
@@ -37,6 +38,19 @@ public class prefixSumTechnique {
         return false;
     }
 
+    boolean check3EqualParts(){
+        if (a[n-1]%3!=0){
+            return false;
+        }
+        int requiredPartSum = a[n-1]/3;
+        if (Arrays.binarySearch(a,requiredPartSum)>=0 && Arrays.binarySearch(a,requiredPartSum*2)>=0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public static int maxOccurrence(int L[], int R[]){
         int n = L.length;
         int arr[] = new int[1000];
@@ -71,7 +85,7 @@ class main{
 
     public static void main(String arg[]){
 //        int arr[] = {3,4,8,-9,8,6};
-        int arr[] = {4,2,-2};
+        int arr[] = {5,2,6,1,1,1,5};
         prefixSumTechnique ps = new prefixSumTechnique(arr);
         System.out.println(ps.sumOfRange(2,5));
         System.out.println(ps.sumOfRange(3,2));
@@ -83,5 +97,7 @@ class main{
         int l[] = {1,15,9};
         int r[] = {20,17,15};
         System.out.println(maxOccurrence(l,r));
+
+        System.out.println(ps.check3EqualParts());
     }
 }
