@@ -1,5 +1,9 @@
 package DSAAdvance.arrays;
 
+import java.util.ArrayList;
+
+import static DSAAdvance.arrays.prefixSumTechnique.maxOccurrence;
+
 public class prefixSumTechnique {
     int a[];
     int n;
@@ -32,9 +36,39 @@ public class prefixSumTechnique {
         }
         return false;
     }
+
+    public static int maxOccurrence(int L[], int R[]){
+        int n = L.length;
+        int arr[] = new int[1000];
+
+        for(int i = 0; i < n; i++)
+        {
+            arr[L[i]]++;
+
+            arr[R[i] + 1]--;
+        }
+
+        int maxm = arr[0], res = 0;
+
+        for(int i = 1; i < 1000; i++)
+        {
+            arr[i] += arr[i - 1];
+
+            if(maxm < arr[i])
+            {
+                maxm = arr[i];
+
+                res = i;
+            }
+        }
+
+        return res;
+    }
+
 }
 
 class main{
+
     public static void main(String arg[]){
 //        int arr[] = {3,4,8,-9,8,6};
         int arr[] = {4,2,-2};
@@ -45,5 +79,9 @@ class main{
         System.out.println(ps.sumOfRange(4,8));
         System.out.println(ps.sumOfRange(1,3));
         System.out.println(ps.checkEquilibrium());
+
+        int l[] = {1,15,9};
+        int r[] = {20,17,15};
+        System.out.println(maxOccurrence(l,r));
     }
 }
