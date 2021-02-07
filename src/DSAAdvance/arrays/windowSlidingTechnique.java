@@ -1,6 +1,8 @@
 package DSAAdvance.arrays;
 
 import java.util.ArrayDeque;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 
 public class windowSlidingTechnique {
@@ -65,6 +67,26 @@ public class windowSlidingTechnique {
         System.out.println();
     }
 
+    static void printCountOfDistinctElement(int arr[], int k){
+        int n = arr.length;
+        Map<Integer, Integer> hm = new HashMap<>();
+        for (int i = 0; i<k; i++){
+            hm.put(arr[i], hm.getOrDefault(arr[i],0)+1);
+        }
+        for (int i = 0; i<n-k; i++){
+            int distinct = hm.size();
+            System.out.print(distinct+" ");
+            if (hm.get(arr[i])==1){
+                hm.remove(arr[i]);
+            }
+            else {
+                hm.put(arr[i],hm.get(arr[i])-1);
+            }
+            hm.put(arr[i+k], hm.getOrDefault(arr[i+k],0)+1);
+        }
+        System.out.println(hm.size());
+    }
+
     public static void main(String arg[]){
         int arr[] = {1,8,30,-5,20,7};
         int k = 3;
@@ -76,5 +98,7 @@ public class windowSlidingTechnique {
 
         printNBonacci(4,10);
 
+        int arr3[] = {1,2,1,3,4,3,3};
+        printCountOfDistinctElement(arr3,4);
     }
 }
