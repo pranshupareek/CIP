@@ -26,7 +26,7 @@ public class sortAnArrayWithThreeTypesOfElement {
         }
     }
     public static void main(String arg[]){
-        int arr[] = {0,1,2,0,2,1,2,1,1,1,0,0,0}g;
+        int arr[] = {0,1,2,0,2,1,2,1,1,1,0,0,0};
         sortArray(arr);
         System.out.println(Arrays.toString(arr));
     }
