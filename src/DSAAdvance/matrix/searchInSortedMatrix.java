@@ -4,7 +4,7 @@ public class searchInSortedMatrix {
         int c = arr[0].length;
         int top = 0;
         int right = r-1;
-        while (top<=c&&right>=0) {
+        while (top<c&&right>=0) {
             if (arr[top][right] == ele) {
                 System.out.println(top+" "+right);
                 return;
