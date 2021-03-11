@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class anagramSearch {
     static boolean checkAnagramPresent(String txt, String pat){
