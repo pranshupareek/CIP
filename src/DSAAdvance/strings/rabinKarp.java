@@ -1,4 +1,4 @@
-package DSAAdvance.strings;
+
 
 public class rabinKarp {
     static final int d = 256;
