@@ -24,6 +24,19 @@ public class detectLoopInLL {
         }
         return false;
     }
+
+    static boolean detectLoopFloyd(Node head){
+        Node slow = head;
+        Node fast = head;
+        while (fast!=null&&fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast==slow){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Node head = new Node(10);
         head.next = new Node(20);
@@ -37,6 +50,7 @@ public class detectLoopInLL {
         head.next.next.next.next.next.next.next.next.next = head.next.next.next.next.next.next.next.next;
 
         System.out.println(detectLoopHashing(head));
+        System.out.println(detectLoopFloyd(head));
 
     }
 }
