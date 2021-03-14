@@ -37,6 +37,36 @@ public class detectLoopInLL {
         }
         return false;
     }
+
+    static void detectAndRemoveLoop(Node head){
+        Node slow= head,fast = head; 
+      
+        while (fast!=null && fast.next!=null) { 
+            slow = slow.next; 
+            fast = fast.next.next; 
+            if (slow == fast) { 
+                break; 
+            } 
+        } 
+        if(slow!=fast)
+            return;
+        slow=head;
+        while(slow.next!=fast.next){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        fast.next=null;   
+
+    }
+
+    static void printLL(Node head){
+        Node cur = head;
+        while (cur!=null){
+            System.out.print(cur.val+" ");
+            cur = cur.next;
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
         Node head = new Node(10);
         head.next = new Node(20);
@@ -51,6 +81,8 @@ public class detectLoopInLL {
 
         System.out.println(detectLoopHashing(head));
         System.out.println(detectLoopFloyd(head));
-
+        detectAndRemoveLoop(head);
+        System.out.println(detectLoopFloyd(head));
+        printLL(head);
     }
 }
