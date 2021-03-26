@@ -1,4 +1,4 @@
-package CodeJamPY.qualificationround;
+package CodeJam.qualificationround;
 
 import java.util.*;
 
