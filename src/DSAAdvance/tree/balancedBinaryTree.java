@@ -31,7 +31,13 @@ public class balancedBinaryTree {
     }
 
     public static void main(String[] args) {
-        c
+        Node root=new Node(20);
+    	root.left=new Node(8);
+    	root.right=new Node(12);
+    	root.right.left=new Node(3);
+    	root.right.right=new Node(9);
+        root.left.left = new  Node(8);
+        root.left.left.right = new Node(8);
         System.out.println(checkBalancedTree(root));
     }
 }
