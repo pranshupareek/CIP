@@ -15,7 +15,7 @@ class Node{
 
 public class levelOrderTraversal {
 
-    static void printLOT(Node root){
+    public static void printLOT(Node root){
         Node cur = root;
         Node dummy = new Node(-1);
         Deque<Node> dq = new ArrayDeque<>();
