@@ -1,34 +1,22 @@
 package DSAAdvance.tree;
 
 public class countNodesInCompleteBT{
-    class Sum{
-        int val;
-        Sum(int ele){
-            val=ele;
+    public static int countNode(Node root){
+        int lh=0,rh=0;
+        Node curr=root;
+        while(curr!=null){
+            lh++;
+            curr=curr.left;
         }
-    }
-    static int sumOfGP(int n, Sum sum){   
-        int a = 1, r = 2;
-
-        return ((a * (1 – (int)(Math.pow(r, n)))) /( 1 – r));
-    }
-    static int countNodes(Node root){
-        if (root==null){
-            return 0;
+        curr=root;
+        while(curr!=null){
+            rh++;
+            curr=curr.right;
         }
-        int left = countNodes(root.left);
-        int right = countNodes(root.right);
-        if (left<0){
-
+        if(lh==rh){
+            return (int)Math.pow(2,lh)-1;
+        }else{
+            return 1+countNode(root.left)+countNode(root.right);
         }
-        else if (right<0){
-
-        }
-        else if (left==right){
-            return left+1;
-        }
-
-        return 
-
-    }
+    } 
 }
