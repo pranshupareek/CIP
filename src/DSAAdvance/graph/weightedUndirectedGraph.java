@@ -2,10 +2,10 @@ package DSAAdvance.graph;
 
 import java.util.*;
 
-Pair{
+class myPair{
     int node;
     int distance;
-    Pair(int node, int distance){
+    myPair(int node, int distance){
         this.node = node;
         this.distance = distance;
     }
@@ -19,7 +19,7 @@ Pair{
 }
 
 public class weightedUndirectedGraph {
-    ArrayList<ArrayList<Pair>> adj;
+    ArrayList<ArrayList<myPair>> adj;
     
     weightedUndirectedGraph(int size){
         adj = new ArrayList<>(size);
@@ -28,16 +28,16 @@ public class weightedUndirectedGraph {
         }
     }
 
-    ArrayList<Pair> getList(int u){
+    ArrayList<myPair> getList(int u){
         return adj.get(u);
     }
 
     void addEdge(int i, int j, int distance){
-        adj.get(i).add(new Pair(j,distance));
-        adj.get(j).add(new Pair(i,distance));
+        adj.get(i).add(new myPair(j,distance));
+        adj.get(j).add(new myPair(i,distance));
     }
 
-    void removeEdge(int u, Pair v){
+    void removeEdge(int u, myPair v){
         for (int i = 0; i<adj.get(u).size(); i++){
             if (adj.get(u).get(i)==v){
                 adj.get(u).remove(i);
@@ -46,7 +46,7 @@ public class weightedUndirectedGraph {
         }
         
         int count = 0;
-        for (Pair i : getList(v.node)){
+        for (myPair i : getList(v.node)){
             if (u==i.node){
                 getList(v.node).remove(count);
                 break;
