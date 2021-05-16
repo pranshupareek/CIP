@@ -24,5 +24,6 @@ public class maximumCuts {
 
     public static void main(String[] args) {
         System.out.println(maxCuts(5,1,2,3));
+        System.out.println(maxCuts(5, 2, 4, 6));
     }
 }
