@@ -1,7 +1,5 @@
 package DSAAdvance.dp;
 
-import java.util.Arrays;
-
 public class shortestCommonSuperSequence {
     static String getSCSS(String s1, String s2){
         int n1 = s1.length();
@@ -33,7 +31,7 @@ public class shortestCommonSuperSequence {
                 i--;
                 j--;
             }
-            else if (dp[i][j-1]>=dp[i-1][j]){
+            else if (dp[i][j-1]<=dp[i-1][j]){
                 sb.append(s2.charAt(j-1));
                 j--;
             }
@@ -50,13 +48,10 @@ public class shortestCommonSuperSequence {
             sb.append(s2.charAt(j-1));
             j--;
         }
-        for (i = 0; i<=n1; i++){
-            System.out.println(Arrays.toString(dp[i]));
-        }
         sb.reverse();
-        System.out.println(sb);
-        System.out.println(dp[n1][n2]);
-        return "";
+        // System.out.println(sb);
+        // System.out.println(dp[n1][n2]);
+        return sb.toString();
     }
 
     public static void main(String[] args) {

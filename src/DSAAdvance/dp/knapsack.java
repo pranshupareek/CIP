@@ -1,7 +1,5 @@
 package DSAAdvance.dp;
 
-import java.util.*;
-
 public class knapsack{
     static int getMaxProfit(int val[], int weight[], int max, int n){
         if (n==0){
