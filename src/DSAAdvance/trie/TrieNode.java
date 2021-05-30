@@ -32,6 +32,38 @@ class Main{
         }
         return cur.isEnd;
     }
+
+    static TrieNode remove(TrieNode root, String key, int i){
+        if (root==null){
+            return null;
+        }
+        if (i==key.length()){
+            if (root.isEnd){
+                root.isEnd = false;
+            }
+            if (isEmpty(root)){
+                root = null;
+            }
+            return root;
+        }
+
+        int index = key.charAt(i) - 'a';
+        root.child[index] = remove(root.child[index], key, i+1);
+
+        if (isEmpty(root)&&!root.isEnd){
+            root = null;
+        }
+        return root;
+    }
+
+    static boolean isEmpty(TrieNode root){
+        for (int i = 0; i<26; i++){
+            if (root.child[i]!=null){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         TrieNode Trie = new TrieNode();
         String dict[] = {"bad","bat","geek","geeks","cat","cut","zoo"};
@@ -40,5 +72,8 @@ class Main{
         }
         System.out.println(search(Trie, "str"));
         System.out.println(search(Trie, "bad"));
+        remove(Trie, "bad", 0);
+        System.out.println(search(Trie, "bad"));
+        System.out.println(search(Trie, "bat"));
     }
 }
