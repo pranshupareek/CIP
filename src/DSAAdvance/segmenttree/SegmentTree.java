@@ -17,7 +17,7 @@ public class SegmentTree {
         makeST(st, ps, 0, n-1, 0);
     }
 
-    void makeST(int st[], int ps[], int i, int j, int cur){
+    private void makeST(int st[], int ps[], int i, int j, int cur){
         if (i==j){
             st[cur]=getSum(ps, i, j);
             return; 
@@ -29,7 +29,7 @@ public class SegmentTree {
         makeST(st, ps, mid+1, j, child+1);
     }
 
-    int getSum(int ps[], int i, int j){
+    private int getSum(int ps[], int i, int j){
         if(i==0){
             return ps[j];
         }
@@ -39,11 +39,11 @@ public class SegmentTree {
         return st;
     }
 
-    int getSum(int i, int j){
+    public int getSum(int i, int j){
         return getSumRec(i, j, 0, n-1, 0);
     }
 
-    int getSumRec(int qs, int qe, int ss, int se, int si){
+    private int getSumRec(int qs, int qe, int ss, int se, int si){
         if (se<qs||ss>qe){
             return 0;
         }
@@ -53,13 +53,32 @@ public class SegmentTree {
         int mid = (ss+se)/2;
         return getSumRec(qs, qe, ss, mid, 2*si +1)+getSumRec(qs, qe, mid+1, se, 2*si+2);
     }
+
+    public void update(int i, int val){
+        int diff = val - getSum(i, i);
+        updateRec(0,n-1,i,0,diff);
+    }
+
+    private void updateRec(int ss, int se, int i, int si, int diff){
+        if (i<ss||i>se){
+            return;
+        }
+        st[si]+=diff;
+        if (se>ss){
+            int mid = (ss+se)/2;
+            updateRec(ss, mid, i, 2*si+1, diff);
+            updateRec(mid+1, se, i, 2*si+2, diff);
+        }
+    }
 }
 
-class main{
+class Main{
     public static void main(String[] args) {
         int arr[] = {10,20,30,40};
         SegmentTree st = new SegmentTree(arr);
         System.out.println(Arrays.toString(st.getSt()));
+        System.out.println(st.getSum(1, 2));
+        st.update(1, 25);
         System.out.println(st.getSum(1, 2));
     }
 }
