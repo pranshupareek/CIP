@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public class SegmentTree {
     int st[];
+    int n;
     SegmentTree(int arr[]){
-        int n = arr.length;
+        n = arr.length;
         st = new int[4*n];
         int ps[] = new int[n];
         ps[0] = arr[0];
@@ -37,6 +38,21 @@ public class SegmentTree {
     public int[] getSt() {
         return st;
     }
+
+    int getSum(int i, int j){
+        return getSumRec(i, j, 0, n-1, 0);
+    }
+
+    int getSumRec(int qs, int qe, int ss, int se, int si){
+        if (se<qs||ss>qe){
+            return 0;
+        }
+        if (qs<=ss&&qe>=se){
+            return st[si];
+        }
+        int mid = (ss+se)/2;
+        return getSumRec(qs, qe, ss, mid, 2*si +1)+getSumRec(qs, qe, mid+1, se, 2*si+2);
+    }
 }
 
 class main{
@@ -44,5 +60,6 @@ class main{
         int arr[] = {10,20,30,40};
         SegmentTree st = new SegmentTree(arr);
         System.out.println(Arrays.toString(st.getSt()));
+        System.out.println(st.getSum(1, 2));
     }
 }
